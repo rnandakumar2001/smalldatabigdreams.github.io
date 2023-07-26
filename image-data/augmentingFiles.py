@@ -102,6 +102,61 @@ def grayscaled(randInd):
     visualize_dataset(grays)
     return grays
 
+def brightness(randInd):
+    bright = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.ColorJitter(brightness=3)])
+    )
+    brightn=[bright[i] for i in randInd]
+    visualize_dataset(brightn)
+    return brightn
+
+def contrast(randInd):
+    con = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.ColorJitter(contrast=3)])
+    )
+    cont=[con[i] for i in randInd]
+    visualize_dataset(cont)
+    return cont
+
+def saturation(randInd):
+    sat = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.ColorJitter(saturation=3)])
+    )
+    saturation=[sat[i] for i in randInd]
+    visualize_dataset(saturation)
+    return saturation
+
+def saturation(randInd):
+    sat = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.ColorJitter(saturation=3)])
+    )
+    saturation=[sat[i] for i in randInd]
+    visualize_dataset(saturation)
+    return saturation
+
+def hue(randInd):
+    h = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.ColorJitter(hue=0.5)])
+    )
+    hue=[h[i] for i in randInd]
+    visualize_dataset(hue)
+    return hue
+
 def weak_Perspective(randInd):
     perspective = datasets.CIFAR10(
         root="complete-data",
@@ -124,19 +179,70 @@ def strong_Perspective(randInd):
     visualize_dataset(per2)
     return per2
 
-def combined_Augmented_Data(randInd):
+def horizFlip(randInd):
+    flip = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.RandomHorizontalFlip(1)])
+    )
+    horiz=[flip[i] for i in randInd]
+    visualize_dataset(horiz)
+    return horiz
+
+def vertFlip(randInd):
+    flip = datasets.CIFAR10(
+        root="complete-data",
+        train=True,
+        download=True,
+        transform=transforms.Compose([transforms.ToTensor(), transforms.RandomVerticalFlip(1)])
+    )
+    vert=[flip[i] for i in randInd]
+    visualize_dataset(vert)
+    return vert
+
+def all_Combined_Augmented_Data(randInd):
     rand_imgs=[train_data[i] for i in rand_indices]
     visualize_dataset(rand_imgs) # This is normal images with no transformations
-    
-    random_Crop(randInd)
     rotated_90(randInd)
     rotated_180(randInd)
     rotated_270(randInd)
+    brightness(randInd)
+    contrast(randInd)
+    saturation(randInd)
+    hue(randInd)
     grayscaled(randInd)
+    horizFlip(randInd)
+    vertFlip(randInd)
+    random_Crop(randInd)
     weak_Perspective(randInd)
     strong_Perspective(randInd)
     
+def rotation_Augmented_Data(randInd):
+    rand_imgs=[train_data[i] for i in rand_indices]
+    visualize_dataset(rand_imgs) # This is normal images with no transformations
+    rotated_90(randInd)
+    rotated_180(randInd)
+    rotated_270(randInd)
+
+def colors_Augmented_Data(randInd):
+    rand_imgs=[train_data[i] for i in rand_indices]
+    visualize_dataset(rand_imgs) # This is normal images with no transformations
+    brightness(randInd)
+    contrast(randInd)
+    saturation(randInd)
+    hue(randInd)
+    grayscaled(randInd)
+
+def position_Augmented_Data(randInd):
+    rand_imgs=[train_data[i] for i in rand_indices]
+    visualize_dataset(rand_imgs) # This is normal images with no transformations
+    horizFlip(randInd)
+    vertFlip(randInd)
+    random_Crop(randInd)
+    weak_Perspective(randInd)
+    strong_Perspective(randInd)
 
 rand_indices=np.random.randint(0,len(train_data),size=9)
-a = combined_Augmented_Data(rand_indices)
+a = position_Augmented_Data(rand_indices)
 
