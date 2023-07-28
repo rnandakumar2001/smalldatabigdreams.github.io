@@ -75,7 +75,7 @@ In this equation:
 XGBoost (Extreme Gradient Boosting): The objective function that
 XGBoost optimizes is represented by the following equation:
 
-<img width="505" alt="models2" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/6f7d444b-8ddd-47eb-8747-6f3e6bebddfa">
+![TP FN](/models2.PNG)
 
 In this equation:
 - $obj(\theta)$ is the objective function to be minimized.
@@ -88,7 +88,7 @@ $\Omega(f)=\gamma T+\frac{1}{2} \lambda\|w\|^2$, where $\gamma T$ is the complex
 LightGBM (Light Gradient Boosting Machine): LightGBM is a gradient-boosting framework that uses tree-based learning algorithms. It is designed to be efficient and contains several advanced features, such as support for categorical features and an option for a histogram-based algorithm for bucketing continuous features.
 The objective function that LightGBM optimizes is represented by the following equation:
 
-<img width="441" alt="models3" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/51e59388-502f-438c-9b30-bf946f8be88c">
+![TP FN](/models3.PNG)
 
 In this equation:
 - $obj(\theta)$ is the objective function to be minimized.
