@@ -63,6 +63,7 @@ We’ll further explore how we can fine-tune existing large models for small dat
 
 CNN (Convolutional Neural Networks): The convolution operation in a
 $\mathrm{CNN}$ is represented by the following equation:
+
 <img width="609" alt="models1" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/d4234c92-518c-48fd-92c4-7c5fc51983e6">
 
 $(I * K)[m, n]=\sum_{i=1}^h \sum_{j=1}^w I[i, j] \cdot K[m-i, n-j]$
