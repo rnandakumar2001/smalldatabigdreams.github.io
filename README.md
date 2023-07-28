@@ -90,8 +90,6 @@ The objective function that LightGBM optimizes is represented by the following e
 
 <img width="441" alt="models3" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/51e59388-502f-438c-9b30-bf946f8be88c">
 
-$obj(\theta)=\sum_{i=1}^n L\left(y_i, f\left(x_i\right)\right)+\Omega(f)$
-
 In this equation:
 - $obj(\theta)$ is the objective function to be minimized.
 - $L$ is a differentiable convex loss function that measures the difference between the prediction $\left(f\left(x_i\right)\right)$ and the target $\left(y_i\right)$.
