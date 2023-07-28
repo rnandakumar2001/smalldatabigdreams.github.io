@@ -65,6 +65,7 @@ CNN (Convolutional Neural Networks): The convolution operation in a
 $\mathrm{CNN}$ is represented by the following equation:
 
 <img width="609" alt="models1" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/d4234c92-518c-48fd-92c4-7c5fc51983e6">
+
 In this equation:
 - $I$ is the input image.
 - $K$ is the kernel or filter.
@@ -73,7 +74,11 @@ In this equation:
 
 XGBoost (Extreme Gradient Boosting): The objective function that
 XGBoost optimizes is represented by the following equation:
+
+<img width="505" alt="models2" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/6f7d444b-8ddd-47eb-8747-6f3e6bebddfa">
+
 $obj(\theta)=\sum_i^n L\left(y_i, f\left(x_i\right)\right)+\Omega(f)$
+
 In this equation:
 - $obj(\theta)$ is the objective function to be minimized.
 - $L$ is a differentiable convex loss function that measures the difference between the prediction and the target.
