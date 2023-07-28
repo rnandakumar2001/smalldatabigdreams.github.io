@@ -77,8 +77,6 @@ XGBoost optimizes is represented by the following equation:
 
 <img width="505" alt="models2" src="https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/75278075/6f7d444b-8ddd-47eb-8747-6f3e6bebddfa">
 
-$obj(\theta)=\sum_i^n L\left(y_i, f\left(x_i\right)\right)+\Omega(f)$
-
 In this equation:
 - $obj(\theta)$ is the objective function to be minimized.
 - $L$ is a differentiable convex loss function that measures the difference between the prediction and the target.
