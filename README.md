@@ -64,7 +64,7 @@ We’ll further explore how we can fine-tune existing large models for small dat
 CNN (Convolutional Neural Networks): The convolution operation in a
 $\mathrm{CNN}$ is represented by the following equation:
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/blob/main/models1.PNG)
+![ROC](/models1.PNG)
 
 In this equation:
 - $I$ is the input image.
