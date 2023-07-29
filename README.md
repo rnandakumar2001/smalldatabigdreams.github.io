@@ -106,6 +106,7 @@ Adjusted R^2 = 1 - ((1 - R^2) * (n - 1)) / (n - k - 1)
    - where R^2 = 1 - SS_res / SS_tot
    - SS_res = the sum of squares of the residual errors.
    - SS_tot = total sum of squares.
+
 - n is the total number of observations.
 - k is the number of predictors in the model.
 
