@@ -6,8 +6,7 @@ The implementation starts with feature selection, which involves identifying and
 
 Subsequently, we turn to data augmentation, an approach that plays a crucial role in counteracting the lack of data. By creating a diverse range of transformations of the original data, we are effectively expanding the dataset and providing the model with more varied scenarios to learn from. This assists in reducing overfitting and in enhancing the model's ability to capture desired properties and invariances.
 
-In parallel, we incorporate data synthesis techniques for generating additional synthetic data that mirrors the properties of the real-world data. We utilize generative adversarial networks (GANs) and diffusion models, renowned for their capacity to create high-quality synthetic data. GANs, which consist of a generator and discriminator network, can learn and mimic the data distribution of the training set. Similarly, diffusion models, specifically the TabDPPM diffusion model, can model the data distribution and generate new synthetic data, thereby providing an additional source of training data.
-Finally, for the model, we employ complex models such as a convolutional neural network for image classification tasks, which can effectively handle and extract intricate patterns from image data. By leveraging transfer learning, we aim to utilize these models' pre-trained knowledge and fine-tune them to our specific tasks, thus making efficient use of the limited data.
+We also leveraged transfer learning, with an aim to utilize these models' pre-trained knowledge and fine-tune them to our specific tasks, thus making efficient use of the limited data.
 
 
 ## Problem Statement
@@ -15,43 +14,6 @@ The motivation of this project is to experiment with various dataset sizes and m
 
 ## Methods
 We are going to explore different ways to deal with small datasets.
-
-### Generative models for data synthesis:
-Synthetic data as a supplement to real data is another way to deal with small datasets. Specifically, we will test the GAN and Diffusion models on their efficacy in generating synthetic data.
-
-GAN (Generative Adversarial Networks): GANs consist of two parts: a generator network, which produces synthetic data, and a discriminator network, which tries to distinguish between the real and synthetic data. The two networks are trained together, with the generator network trying to fool the discriminator network, and the discriminator network trying to accurately classify the data as real or synthetic. This adversarial process leads to the generator network producing increasingly realistic data. The reason we believe GANs would work well for data augmentation is due to their ability to learn and mimic the complex distributions of real-world data.
-The training process of a GAN can be represented by the following min-max equation:
-
-![image](https://github.gatech.edu/storage/user/35648/files/310ccce5-81ed-4782-98b4-a4cd019945e7)
-
-In this equation:
-
-- E denotes the expectation.
-
-- x is a sample from the real data.
-
-- z is a sample from the noise distribution.
-
-- D(x) is the discriminator's estimate of the probability that real data instance x is real.
-
-- G(z) is the generator's output when given noise z.
-
-- D(G(z)) is the discriminator's estimate of the probability that a fake instance is real.
-
-Diffusion models: Diffusion models are a class of generative models that generate data by simulating a diffusion process, which gradually adds noise to the data until it reaches a predefined noise level. The generated data is then obtained by reversing this process, gradually removing the noise. For tabular data, we will use a specific type of diffusion model called TabDPPM (Tabular Data Pre-training via Predictive Modeling).
-
-The reason we believe diffusion models would work well for tabular regression tasks is due to their ability to model the data distribution in a more granular and step-wise manner, which can capture the intricate structures in tabular data. The diffusion process can be represented by the following stochastic differential equation:
-
-$dx = \sqrt{2D} \, dt \, dW - D \, \nabla_x(\log p(x)) \, dt$
-
-In this equation:
-
-- x is the data.
-- D is the diffusion coefficient.
-- t is the time.
-- W is a Wiener process.
-- p(x) is the data distribution.
-We will use textual inversion on pre-trained diffusion models to engineer a prompt for our dataset, and use this prompt as a condition to generate synthetic data from the pre-trained diffusion model. The textual inversion process involves finding the most likely latent variables that would have produced a given output, which can be used to guide the generation process.
 
 ### Transfer learning: 
 We’ll further explore how we can fine-tune existing large models for small dataset classification tasks.
@@ -235,11 +197,19 @@ We use a Convolutional neural network model to perform image classification. For
 The benchmark is the complete dataset of CIFAR10 and the model shows good performance on it:![image](https://github.gatech.edu/storage/user/68901/files/464cfc0b-c7f5-4d49-9827-6f5fdbf882ae)
 
 #### Tabular:
-We used LightGBM and XGBoost due to their tree-based architecture which has shown the most promise for tabular-based data [6]. Based on the results, it can be seen XGboost outperforms LightGBM perhaps due to its split finding algorithm over lightgbm's histogram for data binning, or regularization in the objective function. It should also be noted that lightgbm typically performs better on larger datasets, and since with ~20,000 rows of data one could consider our tabular data as medium-sized, XGBoost could be considered as more suited for our current dataset [7]. From the validation graph we can also conclude that our model is currently not overfitting when trained on 70% of the full data.
+We initially tested linear regression and random forest due to their simple architecture and applicability to our tabular regression dataset. After this, LightGBM and XGBoost were evaluated due to their tree-based architecture which has shown the most promise for tabular-based data [6]. Based on the results, it can be seen XGboost outperforms LightGBM perhaps due to its split finding algorithm over lightgbm's histogram for data binning, or regularization in the objective function. It should also be noted that lightgbm typically performs better on larger datasets, and since with ~20,000 rows of data one could consider our tabular data as medium-sized, XGBoost could be considered as more suited for our current dataset [7]. From the validation graph we can also conclude that our model is currently not overfitting when trained on 70% of the full data. Based on these initial comparisons, we decided to evaluate our random forest model vs our XGBoost model to determine which would perform best on a limited dataset. Based on our results, random forest performed best across RMSE, adjusted R2, and validation error scores for the majority of sample sizes. 
 
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/c4191057-3383-4b87-a6c5-d5adf4d9b215)
 ![image](https://github.gatech.edu/storage/user/35648/files/623c2366-b0f7-455c-8b19-52d53895a289)
 ![image](https://github.gatech.edu/storage/user/35648/files/5277e3fa-6509-4b3a-8a26-eb3b71420e17)
 ![image](https://github.gatech.edu/storage/user/35648/files/67202b95-f831-45e4-9f0a-ea71c127acee)
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/6d52c971-ba13-473d-99c7-b4714ca1335d)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/ec48169b-32d3-48de-9cbc-4616ac7c64c1)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/b936e030-8d23-46cc-9b77-104fa82094ac)
+
+
 
 ### Transfer Learning
 #### Image:
@@ -280,11 +250,11 @@ More training data and testing data generally result in better performance of th
 
 | Name            | Contribution                              |
 |-----------------|-------------------------------------------|
-| Gabe Graves     | XGBoost, GAN, Tabular Feature Seleciton, Updated Intro, Background, Methods |
+| Gabe Graves     | XGBoost, Tabular Feature Seleciton, Updated Intro, Background, Methods |
 | Lucy Xing       | Data Cleaning                          |
 | Hyuk Lee      | Data Augmentation                     |
 | Hannah Huang      | CNN and training, Transfer Learning                               |
-| Rohan Nandakumar| Tabular Preprocessing, Diffusion                      |
+| Rohan Nandakumar| Linear Regression, Random Forest                     |
 
 
 
