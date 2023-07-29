@@ -41,13 +41,7 @@ Random Forest Regression
 ![image](/Random-Forest-visualization.png)
 Random Forest Regression is another regression model we used that combines the principles of ensemble learning and decision tree regression. It is used for regression tasks, where the goal is to predict a continuous numerical output based on input features. Random Forest is an example of an ensemble learning method that creates multiple decision trees during the training process and combines their predictions to make the final prediction(see the image above). To build a Random Forest Regression model, multiple decision trees are constructed, each trained on a random subset of the data and a random subset of features, reducing overfitting and improving generalization. Random Forest Regression is advantageous for its robustness against overfitting, ability to handle high-dimensional data, flexibility in dealing with various data types, and built-in feature importance analysis.
 
-Random Forest Regression ultimately proved to be better performing than Linear regression as shown in the bar graph below comparing MSE values.
-
-![image](/linearvrf.PNG)
-
-However, XGBoost proved to reign supreme in performance metrics. It ultimately performed better than Random Forest, as shown in the RMSE bar plot below.
-
-![image](/xgboostvrf.PNG)
+We next tested XGBoost and LightGBM due to their performance for tabular regression problems [7]. Gradient boosting is a technique used for regression and classification tasks that leverages the concept of boosting (fitting a sequence of weak learners to weighted versions of the data) to generate an ensemble of weak prediction models, in this case decision trees, to create a stronger final prediction model. It works by building the first model on the original dataset, then building additional models that focus on the instances (data points) that were incorrectly predicted by the previous models, in essence, correcting the errors of the predecessor models. The final prediction model is a weighted sum of the ensemble of models.
 
 XGBoost (Extreme Gradient Boosting): The objective function that
 XGBoost optimizes is represented by the following equation:
@@ -199,11 +193,19 @@ The benchmark is the complete dataset of CIFAR10 and the model shows good perfor
 #### Tabular:
 We initially tested linear regression and random forest due to their simple architecture and applicability to our tabular regression dataset. After this, LightGBM and XGBoost were evaluated due to their tree-based architecture which has shown the most promise for tabular-based data [6]. Based on the results, it can be seen XGboost outperforms LightGBM perhaps due to its split finding algorithm over lightgbm's histogram for data binning, or regularization in the objective function. It should also be noted that lightgbm typically performs better on larger datasets, and since with ~20,000 rows of data one could consider our tabular data as medium-sized, XGBoost could be considered as more suited for our current dataset [7]. From the validation graph we can also conclude that our model is currently not overfitting when trained on 70% of the full data. Based on these initial comparisons, we decided to evaluate our random forest model vs our XGBoost model to determine which would perform best on a limited dataset. Based on our results, random forest performed best across RMSE, adjusted R2, and validation error scores for the majority of sample sizes. 
 
+Random Forest Regression ultimately proved to be better performing than Linear regression as shown in the bar graph below comparing MSE values.
+
+![image](/linearvrf.PNG)
+
+XGBoost performed better than LightGBM likely due to the smaller data size (14884 x 8) after data cleaning and (21263 x 82) before, which since LightGBM uses a leaf-wise growth strategy that could lead to deeper, complex trees which could lead to overfitting (thus is usually more suited for a larger dataset). Compared to XGBoost's level-wise construction which generates more balanced trees and is less likely to overfit on smaller data. 
 
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/c4191057-3383-4b87-a6c5-d5adf4d9b215)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/58c99eac-6268-4a91-b61d-c0024d66b4d4)
+
 ![image](https://github.gatech.edu/storage/user/35648/files/623c2366-b0f7-455c-8b19-52d53895a289)
 ![image](https://github.gatech.edu/storage/user/35648/files/5277e3fa-6509-4b3a-8a26-eb3b71420e17)
 ![image](https://github.gatech.edu/storage/user/35648/files/67202b95-f831-45e4-9f0a-ea71c127acee)
+
 
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/6d52c971-ba13-473d-99c7-b4714ca1335d)
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/ec48169b-32d3-48de-9cbc-4616ac7c64c1)
