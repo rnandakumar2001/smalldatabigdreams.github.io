@@ -98,16 +98,18 @@ RMSE = sqrt((1/n) * Σ(yi - y_hat_i)^2)
 - yi is the actual value for the i-th observation.
 - y_hat_i is the predicted value for the i-th observation.
 
-The MAE (Mean Absolute Error) is calculated using the following formula:
+The adjusted R^2 can be computed from the R^2 score using the formula:
 
-MAE = (1/n) * Σ|yi - y_hat_i|
+Adjusted R^2 = 1 - ((1 - R^2) * (n - 1)) / (n - k - 1)
 
+-R^2 is the coefficient of determination, which measures how well the regression predictions approximate the real data points.
+  > where R^2 = 1 - SS_res / SS_tot
+  > SS_res = the sum of squares of the residual errors.
+  > SS_tot = total sum of squares.
 - n is the total number of observations.
-- yi is the actual value for the i-th observation.
-- y_hat_i is the predicted value for the i-th observation.
-- |yi - y_hat_i| is the absolute difference between the actual and predicted values for the i-th observation.
+- k is the number of predictors in the model.
 
-Both RMSE and MAE are measures of prediction error, with RMSE giving a relatively high weight to large errors.
+Adjusted R^2 provides a balanced measure of model fit that takes into account the number of predictors, while RMSE penalizes large prediction errors, making it useful when it's particularly important to minimize large mistakes.
 ## Results
 
 ### Data Cleaning
