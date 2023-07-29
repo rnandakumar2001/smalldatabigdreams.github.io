@@ -128,7 +128,7 @@ In this equation:
 
 The RMSE (Root Mean Square Error) is calculated using the following formula:
 
-RMSE = sqrt((1/n) * Σ(yi - y_hat_i)^2)
+$RMSE$ = $sqrt((1/n)$ * $Σ(yi - y_hat_i)^2)$
 
 - n is the total number of observations.
 - yi is the actual value for the i-th observation.
@@ -136,7 +136,7 @@ RMSE = sqrt((1/n) * Σ(yi - y_hat_i)^2)
 
 The adjusted R^2 can be computed from the R^2 score using the formula:
 
-Adjusted R^2 = 1 - ((1 - R^2) * (n - 1)) / (n - k - 1)
+$Adjusted$ $R^2$ = $1 - ((1 - R^2) * (n - 1)) / (n - k - 1)$
 
 -R^2 is the coefficient of determination, which measures how well the regression predictions approximate the real data points.
    - where R^2 = 1 - SS_res / SS_tot
