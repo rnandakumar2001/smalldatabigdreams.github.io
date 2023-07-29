@@ -221,7 +221,7 @@ Here are the results for fine-tuning Resnet on datasets with different sizes:
 
 300 training data, 200 testing data: 
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/f2340574-d9e7-4472-a2fd-9e0cd7746ccc)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/bd825930-5230-41ff-906d-a3262ddd6acf)
 
 1000 training data, 500 testing data: 
 
