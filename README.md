@@ -82,11 +82,11 @@ Random Forest Regression is another regression model we used that combines the p
 
 Random Forest Regression ultimately proved to be better performing than Linear regression as shown in the bar graph below comparing MSE values.
 
-![image](/linearvrf.png)
+![image](/linearvrf.PNG)
 
 However, XGBoost proved to reign supreme in performance metrics. It ultimately performed better than Random Forest, as shown in the RMSE bar plot below.
 
-![image](/xgboostvrf.png)
+![image](/xgboostvrf.PNG)
 
 XGBoost (Extreme Gradient Boosting): The objective function that
 XGBoost optimizes is represented by the following equation:
