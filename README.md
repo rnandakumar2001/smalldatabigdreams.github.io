@@ -56,9 +56,7 @@ Random Forest Regression
 A Random Forest consists of a collection (ensemble) of decision trees. Each individual decision tree $D_i$ in the forest is built using a bootstrapped sample of the original training data, and at each node, a random subset of features is selected for splitting.
 The final prediction of the Random Forest regressor for a new instance $x$ is an average of the predictions of the individual trees:
 
-\[
-Y = \frac{1}{N} \sum_{i=1}^{N} D_i(x)
-\]
+$Y$ = $\frac{1}{N}$ $\sum_{i=1}^{N}$ $D_i(x)$
 
 In this equation:
 - $Y$ is the predicted output.
