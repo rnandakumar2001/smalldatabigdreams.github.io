@@ -215,7 +215,8 @@ We initially tested linear regression and random forest due to their simple arch
 #### Image:
 We fine-tune the Resnet18 model for image classification tasks. We freeze all layers of pre-trained Resnet18 model except the last output layer. 
 
-As a control group, fine-tuning Resnet on the full CIFAIR dataset works fine: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/3c265863-daee-408e-88dc-67e4fcec6d2f)
+As a control group, fine-tuning Resnet on the full CIFAIR dataset works fine: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/e0e88bcc-bb2e-4a4e-b290-74205d7bdbb3)
+
 
 Here are the results for fine-tuning Resnet on datasets with different sizes:
 
@@ -225,19 +226,23 @@ Here are the results for fine-tuning Resnet on datasets with different sizes:
 
 1000 training data, 500 testing data: 
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/1ac9165a-8954-4099-9ff9-074c179533f9)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/097fc751-52f2-4d8b-a958-ce537cca5559)
+
 
 2000 training data, 1000 testing data: 
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/28ce00ac-92f7-4bda-b3c1-bb2fc2971b8c)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/a4d64c28-c266-4e62-a400-ec4382adde77)
+
 
 4000 training data, 1000 testing data: 
   
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/901a575f-aa7e-4c6e-8cb7-cd54b8fc7870)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/8fd172cb-13b0-4201-8016-0db04e640d47)
+
 
 5000 training data, 1000 testing data: 
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/14932c16-8663-4dec-9634-958d51cea4b0)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/c4ec41b6-48ce-4bf5-9967-d12b626db4be)
+
 
 
 More training data and testing data generally result in better performance of the model. Fewer data usually may cause overfitting issues. For example, when there are 300 training data, the validation loss is much higher than the training loss, which is an indication of serious overfitting. Generally, training data with a size of at least 4000 will be sufficient for fine-tuning Resnet18.
