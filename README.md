@@ -204,6 +204,29 @@ Perspective Changes (0.3 and 0.6 respectively): <br>
 - This is used to train the model for stretched and tilted images <br>
 <img src='Weak Perspective.png' width='300'> <img src='Stronger Perspective.png' width='300'>
 
+#### Training augmented dataset result
+
+Here are the results of training CNN on augmented datasets: 
+
+Random Crop:
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/1378b17c-df9b-4103-b624-cd0f813d0c24)
+
+
+Random Rotate:
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/7cdad312-407f-4b72-8a6d-9d102a6db3d4)
+
+Random Perspective:
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/0b27c36b-8838-49ee-abee-9e2f67c7b974)
+
+Combined:
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/0816a6c3-3469-4212-971b-164673d46185)
+
+We primarily explored random crops, random rotation, and random perspective. Comparing these three, random rotation shows the best performance in overcoming the overfitting issue of a small dataset. Augmentation that combines them together shows the best performance, and there's no overfitting issue in the final result, indicating the usefulness of augmentation in tackling overfitting problem.
+
 ### Model
 
 #### Image: 
