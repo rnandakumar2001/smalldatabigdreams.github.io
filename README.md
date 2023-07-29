@@ -103,9 +103,9 @@ The adjusted R^2 can be computed from the R^2 score using the formula:
 Adjusted R^2 = 1 - ((1 - R^2) * (n - 1)) / (n - k - 1)
 
 -R^2 is the coefficient of determination, which measures how well the regression predictions approximate the real data points.
-  > where R^2 = 1 - SS_res / SS_tot
-  > SS_res = the sum of squares of the residual errors.
-  > SS_tot = total sum of squares.
+  * where R^2 = 1 - SS_res / SS_tot
+  * SS_res = the sum of squares of the residual errors.
+  * SS_tot = total sum of squares.
 - n is the total number of observations.
 - k is the number of predictors in the model.
 
