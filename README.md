@@ -304,7 +304,7 @@ More training data and testing data generally result in better performance of th
 
 | Name            | Contribution                              |
 |-----------------|-------------------------------------------|
-| Gabe Graves     | XGBoost, Tabular Feature Seleciton, Updated Intro, Background, Methods |
+| Gabe Graves     | XGBoost, LightGBM, Tabular Feature Metrics/Feature Engineering, Intro, Background, Methods |
 | Lucy Xing       | Data Cleaning                          |
 | Hyuk Lee      | Data Augmentation                     |
 | Hannah Huang      | CNN and training, Transfer Learning                               |
