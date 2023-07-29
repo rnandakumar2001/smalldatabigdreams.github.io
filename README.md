@@ -206,17 +206,37 @@ Perspective Changes (0.3 and 0.6 respectively): <br>
 
 ### Model
 
-Image: 
+#### Image: 
 We use a Convolutional neural network model to perform image classification. For the model, we use 3 CNN layers with ReLU as an activation function and max-pooling after each layer. After the CNN layers, we use 2 fully connected layers to get the final classification result. For the loss function, we use cross-entropy loss.
 
 The benchmark is the complete dataset of CIFAR10 and the model shows good performance on it:![image](https://github.gatech.edu/storage/user/68901/files/464cfc0b-c7f5-4d49-9827-6f5fdbf882ae)
 
-Tabular:
+#### Tabular:
 We used LightGBM and XGBoost due to their tree-based architecture which has shown the most promise for tabular-based data [6]. Based on the results, it can be seen XGboost outperforms LightGBM perhaps due to its split finding algorithm over lightgbm's histogram for data binning, or regularization in the objective function. It should also be noted that lightgbm typically performs better on larger datasets, and since with ~20,000 rows of data one could consider our tabular data as medium-sized, XGBoost could be considered as more suited for our current dataset [7]. From the validation graph we can also conclude that our model is currently not overfitting when trained on 70% of the full data.
 
 ![image](https://github.gatech.edu/storage/user/35648/files/623c2366-b0f7-455c-8b19-52d53895a289)
 ![image](https://github.gatech.edu/storage/user/35648/files/5277e3fa-6509-4b3a-8a26-eb3b71420e17)
 ![image](https://github.gatech.edu/storage/user/35648/files/67202b95-f831-45e4-9f0a-ea71c127acee)
+
+### Transfer Learning
+#### Image:
+We fine-tune the Resnet18 model for image classification tasks. We freeze all layers of pre-trained Resnet18 model except the last output layer. 
+
+As a control group, fine-tuning Resnet on the full CIFAIR dataset works fine: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/3c265863-daee-408e-88dc-67e4fcec6d2f)
+
+Here are the results for fine-tuning Resnet on datasets with different sizes:
+
+300 training data, 200 testing data: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/f2340574-d9e7-4472-a2fd-9e0cd7746ccc)
+
+1000 training data, 500 testing data: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/1ac9165a-8954-4099-9ff9-074c179533f9)
+
+2000 training data, 1000 testing data: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/28ce00ac-92f7-4bda-b3c1-bb2fc2971b8c)
+
+4000 training data, 1000 testing data: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/901a575f-aa7e-4c6e-8cb7-cd54b8fc7870)
+
+5000 training data, 1000 testing data: ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/700faae0-3aa7-40d1-a1e3-139a65106ba3)
+
+More training data and testing data generally result in better performance of the model. Fewer data usually may cause overfitting issues. For example, when there are 300 training data, the validation loss is much higher than the training loss, which is an indication of serious overfitting. Generally, training data with a size of at least 4000 will be sufficient for fine-tuning Resnet18.
 
   
 ## Timeline:
@@ -229,7 +249,7 @@ We used LightGBM and XGBoost due to their tree-based architecture which has show
 | Gabe Graves     | XGBoost, GAN, Tabular Feature Seleciton, Updated Intro, Background, Methods |
 | Lucy Xing       | Data Cleaning                          |
 | Hyuk Lee      | Data Augmentation                     |
-| Hannah Huang      | CNN and training                               |
+| Hannah Huang      | CNN and training, Transfer Learning                               |
 | Rohan Nandakumar| Tabular Preprocessing, Diffusion                      |
 
 
