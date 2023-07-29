@@ -56,7 +56,6 @@ We will use textual inversion on pre-trained diffusion models to engineer a prom
 ### Transfer learning: 
 We’ll further explore how we can fine-tune existing large models for small dataset classification tasks.
 - Changing all parameters of the model is probably unrealistic given our current devices.
-- Use LoRA to fine-tune the classification model.
 - Add layers on top of the pre-trained model and freeze other layers.
 - Use of Big Transfer model for image classification [1].
 
