@@ -47,7 +47,7 @@ In this equation:
 - $\beta_1, is the coefficients of the independent variables.
 - $\epsilon$ is the error term.
 
-We created a Linear Regression model to use as a 'control group' in our quest for creating tabular synthetic data. This model was trained on our cleaned data and then evaluated using the Mean Squared Error(MSE) metric. The MSE value for our Linear Regression Model was 0.103 which is not too bad, but when compared to our next regression model did not match up.
+We created a Linear Regression model to use as a 'control group' in evaluating our model. This model was trained on our cleaned data and then evaluated using the Mean Squared Error(MSE) metric. The MSE value for our Linear Regression Model was 0.103 which is not too bad, but when compared to our next regression model did not match up.
 
 
 
@@ -56,7 +56,7 @@ Random Forest Regression
 A Random Forest consists of a collection (ensemble) of decision trees. Each individual decision tree $D_i$ in the forest is built using a bootstrapped sample of the original training data, and at each node, a random subset of features is selected for splitting.
 The final prediction of the Random Forest regressor for a new instance $x$ is an average of the predictions of the individual trees:
 
-$Y$ = $\frac{1}{N}$ $\sum_{i=1}^{N}$ $D_i(x)$
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/7360c3b8-d858-4d7c-9f59-117fede2ea91)
 
 In this equation:
 - $Y$ is the predicted output.
@@ -205,20 +205,23 @@ Here are the results of training CNN on augmented datasets:
 
 Random Crop:
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/1378b17c-df9b-4103-b624-cd0f813d0c24)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/6a003e88-e6c1-4437-b457-23d094532e1e)
 
 
 Random Rotate:
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/7cdad312-407f-4b72-8a6d-9d102a6db3d4)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/223c6cdd-34d0-4802-9189-af9fbaf17992)
+
 
 Random Perspective:
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/0b27c36b-8838-49ee-abee-9e2f67c7b974)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/b376de59-a8ec-463e-95e8-f638bffaa353)
+
 
 Combined:
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/114440058/0816a6c3-3469-4212-971b-164673d46185)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/5be49f8b-78d9-4a07-b115-1f4a4e182a75)
+
 
 We primarily explored random crops, random rotation, and random perspective. Comparing these three, random rotation shows the best performance in overcoming the overfitting issue of a small dataset. Augmentation that combines them together shows the best performance, and there's no overfitting issue in the final result, indicating the usefulness of augmentation in tackling overfitting problem.
 
