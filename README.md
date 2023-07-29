@@ -34,12 +34,39 @@ In this equation:
 - $m, n$ are the spatial coordinates in the input image.
 - $h, w$ are the dimensions of the kernel.
 
-Linear Regression 
+Linear Regression  
+
+Linear Regression is represented by the following equation:
+$$
+Y=\beta_0+\beta_1 X_1+\beta_2 X_2+\cdots+\beta_n X_n+\epsilon
+$$
+In this equation:
+- $Y$ is the dependent variable (target).
+- $X_1, X_2, \ldots, X_n$ are the independent variables (features).
+- $\beta_0$ is the $y$-intercept.
+- $\beta_1, \beta_2, \ldots, \beta_n$ are the coefficients of the independent variables.
+- $\epsilon$ is the error term.
+
 We created a Linear Regression model to use as a 'control group' in our quest for creating tabular synthetic data. This model was trained on our cleaned data and then evaluated using the Mean Squared Error(MSE) metric. The MSE value for our Linear Regression Model was 0.103 which is not too bad, but when compared to our next regression model did not match up.
 
-Random Forest Regression
-![image](/Random-Forest-visualization.png)
+
+
+Random Forest Regression  
+
+A Random Forest consists of a collection (ensemble) of decision trees. Each individual decision tree $D_i$ in the forest is built using a bootstrapped sample of the original training data, and at each node, a random subset of features is selected for splitting.
+The final prediction of the Random Forest regressor for a new instance $x$ is an average of the predictions of the individual trees:
+$$
+Y=\frac{1}{N} \sum_{i=1}^N D_i(x)
+$$
+In this equation:
+- $Y$ is the predicted output.
+- $N$ is the number of decision trees in the forest.
+- $D_i(x)$ is the prediction of the $i^{\text {th }}$ decision tree for the instance $x$.
+
+
 Random Forest Regression is another regression model we used that combines the principles of ensemble learning and decision tree regression. It is used for regression tasks, where the goal is to predict a continuous numerical output based on input features. Random Forest is an example of an ensemble learning method that creates multiple decision trees during the training process and combines their predictions to make the final prediction(see the image above). To build a Random Forest Regression model, multiple decision trees are constructed, each trained on a random subset of the data and a random subset of features, reducing overfitting and improving generalization. Random Forest Regression is advantageous for its robustness against overfitting, ability to handle high-dimensional data, flexibility in dealing with various data types, and built-in feature importance analysis.
+
+![image](/Random-Forest-visualization.png)
 
 We next tested XGBoost and LightGBM due to their performance for tabular regression problems [7]. Gradient boosting is a technique used for regression and classification tasks that leverages the concept of boosting (fitting a sequence of weak learners to weighted versions of the data) to generate an ensemble of weak prediction models, in this case decision trees, to create a stronger final prediction model. It works by building the first model on the original dataset, then building additional models that focus on the instances (data points) that were incorrectly predicted by the previous models, in essence, correcting the errors of the predecessor models. The final prediction model is a weighted sum of the ensemble of models.
 
@@ -89,6 +116,15 @@ Similarly to the FM measure, we expect the AUC-ROC to be higher for the syntheti
   When using the AUC-ROC for multi-class models with N number of classes, we will plot N number of AUC-ROC curves. For example, if there are three dog breeds (A, B, and C), then we will have 1 ROC for A classified against B and C, 1 ROC for B against A and C, and 1 ROC for C against A and B.
 
 ![ROC](/eq3.png)
+
+The Mean Squared Error (MSE) is calculated using the following formula:
+$$
+\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(y_i-\hat{y}_i\right)^2
+$$
+In this equation:
+- $n$ is the total number of observations.
+- $y_i$ is the actual value for the $i$-th observation.
+- $\hat{y}_i$ is the predicted value for the $i$-th observation.
 
 The RMSE (Root Mean Square Error) is calculated using the following formula:
 
