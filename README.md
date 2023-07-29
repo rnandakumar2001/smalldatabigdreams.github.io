@@ -52,6 +52,7 @@ In this equation:
 - W is a Wiener process.
 - p(x) is the data distribution.
 We will use textual inversion on pre-trained diffusion models to engineer a prompt for our dataset, and use this prompt as a condition to generate synthetic data from the pre-trained diffusion model. The textual inversion process involves finding the most likely latent variables that would have produced a given output, which can be used to guide the generation process.
+
 ### Transfer learning: 
 We’ll further explore how we can fine-tune existing large models for small dataset classification tasks.
 - Changing all parameters of the model is probably unrealistic given our current devices.
@@ -71,6 +72,21 @@ In this equation:
 - $K$ is the kernel or filter.
 - $m, n$ are the spatial coordinates in the input image.
 - $h, w$ are the dimensions of the kernel.
+
+Linear Regression 
+We created a Linear Regression model to use as a 'control group' in our quest for creating tabular synthetic data. This model was trained on our cleaned data and then evaluated using the Mean Squared Error(MSE) metric. The MSE value for our Linear Regression Model was 0.103 which is not too bad, but when compared to our next regression model did not match up.
+
+Random Forest Regression
+![image](/Random-Forest-visualization.png)
+Random Forest Regression is another regression model we used that combines the principles of ensemble learning and decision tree regression. It is used for regression tasks, where the goal is to predict a continuous numerical output based on input features. Random Forest is an example of an ensemble learning method that creates multiple decision trees during the training process and combines their predictions to make the final prediction(see the image above). To build a Random Forest Regression model, multiple decision trees are constructed, each trained on a random subset of the data and a random subset of features, reducing overfitting and improving generalization. Random Forest Regression is advantageous for its robustness against overfitting, ability to handle high-dimensional data, flexibility in dealing with various data types, and built-in feature importance analysis.
+
+Random Forest Regression ultimately proved to be better performing than Linear regression as shown in the bar graph below comparing MSE values.
+
+![image](/linearvrf.png)
+
+However, XGBoost proved to reign supreme in performance metrics. It ultimately performed better than Random Forest, as shown in the RMSE bar plot below.
+
+![image](/xgboostvrf.png)
 
 XGBoost (Extreme Gradient Boosting): The objective function that
 XGBoost optimizes is represented by the following equation:
@@ -103,7 +119,7 @@ We'll use several metrics to gauge the success of our data augmentation techniqu
   After the use of data augmentation, we will utilize two main scoring metrics to determine the effectiveness of the synthetic data. First, the Fowlkess-Mallows Measure utilizes the following equation:
 ![TP FN](/eq1.png)
 
-  We expect a score between 0 and 1 as well as the FM measure being higher for the data augmented set. 
+  We expect a score between 0 and 1 as well as the FM measure being higher for the data-augmented set. 
   The second method that we will use is the “Area Under Curve” of the “Receiver Operating Characteristic” or AUC-ROC. This plots True Positive Rate (TPR) vs False Positive Rate (FPR) where:
 
 ![TPR FPR](/eq2.png)
@@ -141,14 +157,7 @@ Both RMSE and MAE are measures of prediction error, with RMSE giving a relativel
 
 ### Data Cleaning
 #### Tabular Data
-Inititally, we used the uber dataset. Cleaning the uber dataset involved parsing
-through all the data available and removing illfitting data(null data, outliers, irrelevant data).Additionally, only one days worth of data from the uber dataset was
-used, this will serve as our training data and the results from the model will be compared to the actual values recorded in the uber dataset. The data was plotted on
-scatter plots and a heat map to determine what sort of regression should be used to fit to the data. In the future we will apply the best fit regression model and
-begin to train our diffusion model using TabDDPM.The metrics are availible lower in the document. See below for the resulting scatter plots of the cleaned data. Our intitial work on cleaning the uber dataset is shown below, but after more consideration we changed our comparison dataset to the critical superconductor dataset as provided here: https://archive.ics.uci.edu/dataset/464/superconductivty+data. This is due to the dataset being featured as a good dataset for benchmarking due to its 82 features and 21263 rows of data. 
-
-Original Uber Data Visualization:
-<img src='heatmapuber.PNG' width='200'> <img src='counthour.PNG' width='200'> <img src='countday.PNG' width='200'>
+Our initial path was to move forward with the Uber drivetimes data set, however, after more consideration, we changed our comparison dataset to the critical superconductor dataset as provided here: https://archive.ics.uci.edu/dataset/464/superconductivty+data. This is due to the dataset being featured as a good dataset for benchmarking due to its 82 features and 21263 rows of data. 
 
 Updated Correlation Heat Map (Superconductor):
 
@@ -163,7 +172,7 @@ PCA (Superconductor):
 
 ![image](https://github.gatech.edu/storage/user/35648/files/afbb0c40-bb96-4f2e-990a-dd7b22b8e91c)
 
-As can be seen from the feature selection, mean travel time is the most important feature as one would assume. As noted before, this data is not as large as we originally hoped and the relevant features for regression are not vast and so will be updated soon.
+As can be seen from the feature selection, the critical temperature is the most important feature. Thus, the data was cleaned. Using Lasso the importance of different features was mapped as seen in the first figure. Principle Component Analysis was then used to decrease the dataset size by identifying the most important feature and perform dimensionality reduction.  It transformed the dataset with possibly correlated variables into a new set of uncorrelated variables. These principal components are ordered by the amount of variance they explain in the original data, allowing focus to shift to the most important patterns and reducing the dataset's dimensionality. And thus, critical temperature was arrived at as the target feature.
 
 #### Image Data
 The CIFAR-10 dataset of 60,000 labeled images belonging to 10 different classes is a popular dataset that comes with the PyTorch library. We randomly generated a smaller subset of this dataset, consisting of 1,000 images, in order to account for overfitting mitigation, balanced representation, and overall computational efficiency. 
