@@ -199,20 +199,20 @@ Random Forest Regression ultimately proved to be better performing than Linear r
 
 XGBoost performed better than LightGBM likely due to the smaller data size (14884 x 8) after data cleaning and (21263 x 82) before, which since LightGBM uses a leaf-wise growth strategy that could lead to deeper, complex trees which could lead to overfitting (thus is usually more suited for a larger dataset). Compared to XGBoost's level-wise construction which generates more balanced trees and is less likely to overfit on smaller data. 
 
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/c4191057-3383-4b87-a6c5-d5adf4d9b215)
-![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/58c99eac-6268-4a91-b61d-c0024d66b4d4)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/f52d5694-daa6-4f71-8190-8ec80409bf71)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/33c5c3a7-6921-4ef9-a12f-403d3241182c)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/b3f3693a-21ac-47da-9781-e0733747fea2)
 
-![image](https://github.gatech.edu/storage/user/35648/files/623c2366-b0f7-455c-8b19-52d53895a289)
-![image](https://github.gatech.edu/storage/user/35648/files/5277e3fa-6509-4b3a-8a26-eb3b71420e17)
-![image](https://github.gatech.edu/storage/user/35648/files/67202b95-f831-45e4-9f0a-ea71c127acee)
-
+Based on these results, we decided to move forward with XGBoost and ultimately test it vs our Random Forest model as shown below.
 
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/6d52c971-ba13-473d-99c7-b4714ca1335d)
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/ec48169b-32d3-48de-9cbc-4616ac7c64c1)
 ![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/b936e030-8d23-46cc-9b77-104fa82094ac)
 
+From the results above, it was surprising to see that random forest was actually the better model for our data mostly across the board. As can be seen from the PCA transformation, while most of the data was fairly clustered there definitely still existed some outliers which could have swayed random forest to perform better due to 
+its bagging strategy. It should be noted though that not much time was spent on optimizing the hyperparameters of both and so if given more time, a strategy such as bayesian optimization to thoroughly investigate the optimal hyperparameter combination of both models could have led to slightly different outcomes. By ~3000 samples, both models passed the adjusted R2 score of 0.85 wile still keeping a low validation error showing they could be adequate regression models by that sample size. 
 
-
+Finally, it should be noted that originally GAN and Diffusion models were being explored to generate synthetic data for the dataset as another remedy for working with small sample sizes. However, this exploration was dropped after quite a bit of time attempting to get the GAN and diffusion models to work but ultimately coming up short mainly due to our predicting our target variable being a continuous regression problem while techniques such as GAN, diffusion, or other methods for increasing size via oversampling such as SMOTE (Synthetic Minority Oversampling Technique) being better suited for classification problems or discrete regression problems. Consequently, a different dataset should have been chosen from the beginning if we were to have thoroughly explored these techniques. 
 ### Transfer Learning
 #### Image:
 We fine-tune the Resnet18 model for image classification tasks. We freeze all layers of pre-trained Resnet18 model except the last output layer. 
