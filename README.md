@@ -37,14 +37,14 @@ In this equation:
 Linear Regression  
 
 Linear Regression is represented by the following equation:
-$$
-Y=\beta_0+\beta_1 X_1+\beta_2 X_2+\cdots+\beta_n X_n+\epsilon
-$$
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/5d25b8e8-7997-47df-96a4-a7b672fe20f1)
+
 In this equation:
-- $Y$ is the dependent variable (target).
-- $X_1, X_2, \ldots, X_n$ are the independent variables (features).
+- $y$ is the dependent variable (target).
+- $X$ are the independent variables (features).
 - $\beta_0$ is the $y$-intercept.
-- $\beta_1, \beta_2, \ldots, \beta_n$ are the coefficients of the independent variables.
+- $\beta_1, is the coefficients of the independent variables.
 - $\epsilon$ is the error term.
 
 We created a Linear Regression model to use as a 'control group' in our quest for creating tabular synthetic data. This model was trained on our cleaned data and then evaluated using the Mean Squared Error(MSE) metric. The MSE value for our Linear Regression Model was 0.103 which is not too bad, but when compared to our next regression model did not match up.
@@ -55,9 +55,9 @@ Random Forest Regression
 
 A Random Forest consists of a collection (ensemble) of decision trees. Each individual decision tree $D_i$ in the forest is built using a bootstrapped sample of the original training data, and at each node, a random subset of features is selected for splitting.
 The final prediction of the Random Forest regressor for a new instance $x$ is an average of the predictions of the individual trees:
-$$
-Y=\frac{1}{N} \sum_{i=1}^N D_i(x)
-$$
+
+$Y=\frac{1}{N} \sum_{i=1}^N D_i(x)$
+
 In this equation:
 - $Y$ is the predicted output.
 - $N$ is the number of decision trees in the forest.
@@ -119,7 +119,7 @@ Similarly to the FM measure, we expect the AUC-ROC to be higher for the syntheti
 
 The Mean Squared Error (MSE) is calculated using the following formula:
 
-$MSE=\frac{1}{n} \sum_{i=1}^n\left(y_i-\hat{y}_i\right)^2$
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/eb1f182a-f861-4ea5-b027-cfed840695a3)
 
 In this equation:
 - $n$ is the total number of observations.
