@@ -153,9 +153,10 @@ Adjusted R^2 provides a balanced measure of model fit that takes into account th
 #### Tabular Data
 Our initial path was to move forward with the Uber drivetimes data set, however, after more consideration, we changed our comparison dataset to the critical superconductor dataset as provided here: https://archive.ics.uci.edu/dataset/464/superconductivty+data. This is due to the dataset being featured as a good dataset for benchmarking due to its 82 features and 21263 rows of data. 
 
-Updated Correlation Heat Map (Superconductor):
+Original Correlation Heat Map for Superconductor Data (Uncleaned):
 
-![image](https://github.gatech.edu/storage/user/35648/files/28e8ee22-b535-4b1f-8f1c-38bbf1d7b3cb)
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/3a3d089a-892f-4aba-8f27-7d47dbe9cad2)
+
 
 LASSO (Superconductor):
 ![image](https://github.gatech.edu/storage/user/35648/files/b2eb82bd-fe27-40c5-b4a7-1b039fb1ffe5)
@@ -166,7 +167,11 @@ PCA (Superconductor):
 
 ![image](https://github.gatech.edu/storage/user/35648/files/afbb0c40-bb96-4f2e-990a-dd7b22b8e91c)
 
-As can be seen from the feature selection, the critical temperature is the most important feature. Thus, the data was cleaned. Using Lasso the importance of different features was mapped as seen in the first figure. Principle Component Analysis was then used to decrease the dataset size by identifying the most important feature and perform dimensionality reduction.  It transformed the dataset with possibly correlated variables into a new set of uncorrelated variables. These principal components are ordered by the amount of variance they explain in the original data, allowing focus to shift to the most important patterns and reducing the dataset's dimensionality. And thus, critical temperature was arrived at as the target feature.
+Updated Correlation Heat Map for Superconductor Data after Lasso + PCA (Cleaned):
+
+![image](https://github.com/rnandakumar2001/smalldatabigdreams.github.io/assets/37971265/e8e63dd4-a060-48a9-bb73-840c90909803)
+
+We originally started with a data size of 81 features by 21,263 rows of data, with 'critical temp' being our target variable. We then performed Lasso regularization to determine our most important features given our relatively high dimensionality for tabular regression. From lasso, our data went to 14 features by 21,263 rows. We then performed PCA on this data to reduce the rows of data while still keeping most of the data variance and original information of the data via creating new, independent variables. This finally reduced our dataset size to 8 features by 14,884 rows of data for faster model building while still retaining most of the variance. 
 
 #### Image Data
 The CIFAR-10 dataset of 60,000 labeled images belonging to 10 different classes is a popular dataset that comes with the PyTorch library. We randomly generated a smaller subset of this dataset, consisting of 1,000 images, in order to account for overfitting mitigation, balanced representation, and overall computational efficiency. 
