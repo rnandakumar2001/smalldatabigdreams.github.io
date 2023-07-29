@@ -118,9 +118,9 @@ Similarly to the FM measure, we expect the AUC-ROC to be higher for the syntheti
 ![ROC](/eq3.png)
 
 The Mean Squared Error (MSE) is calculated using the following formula:
-\[
-\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+
+\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(y_i-\hat{y}_i\right)^2
+
 In this equation:
 - $n$ is the total number of observations.
 - $y_i$ is the actual value for the $i$-th observation.
