@@ -1,5 +1,5 @@
 # Small Data Big Dreams
-## Intro/Background
+## Introduction/Background
 
 Overfitting, limited dataset sizes, and overall accuracy in machine learning are still areas rife with potential for new development today, and the ability to artificially expand training sets from existing data offers an efficient breakthrough in the field. Consequently, we explored different machine learning techniques in both tabular and image data for producing good prediction results on small data sizes while still avoiding overfitting.
 
